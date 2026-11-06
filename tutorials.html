@@ -217,6 +217,42 @@ section.sitemap{padding:10px 28px 60px;}
 .video-info .lvl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--denim);margin-bottom:6px;display:block;}
 .video-info h4{margin:0 0 6px;font-size:16px;}
 .video-info p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.5;}
+.video-card{cursor:pointer;}
+
+/* VIDEO MODAL */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(62,39,35,0.55);
+  z-index:1000;align-items:center;justify-content:center;padding:24px;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:#fff;border-radius:18px;max-width:720px;width:100%;
+  max-height:88vh;overflow-y:auto;padding:28px;position:relative;
+  box-shadow:0 30px 60px -20px rgba(62,39,35,0.5);
+}
+.modal-close{
+  position:absolute;top:14px;right:16px;background:none;border:none;
+  font-size:26px;line-height:1;cursor:pointer;color:var(--ink-soft);padding:4px;
+}
+.modal-close:hover{color:var(--ink);}
+.modal-video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin-bottom:20px;background:var(--ink);}
+.modal-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.modal-no-video{
+  background:var(--paper-2);border-radius:12px;padding:40px 20px;text-align:center;
+  color:var(--ink-soft);font-size:14px;margin-bottom:20px;
+}
+.modal-box .lvl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--denim);display:block;margin-bottom:8px;}
+.modal-box h3{margin:0 0 10px;font-size:22px;}
+.modal-box .modal-desc{margin:0 0 6px;color:var(--ink-soft);line-height:1.6;font-size:14.5px;}
+.modal-pattern{
+  background:var(--paper-2);border-radius:12px;padding:18px 20px;
+  margin-top:18px;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.75;
+  color:var(--ink);white-space:pre-wrap;border-left:4px solid var(--sage);
+}
+.modal-pattern-label{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--sage);display:block;margin:18px 0 -4px;
+}
 
 /* ===== SQUAD CORNER (blog list) ===== */
 .blog-list{max-width:720px;margin:0 auto;padding:0 28px 70px;display:flex;flex-direction:column;gap:34px;}
@@ -292,7 +328,6 @@ footer p{color:var(--ink-soft);font-size:13px;}
 <div class="chain"></div>
 
 <header class="page-hero">
-  <span class="eyebrow">tutorials &amp; patterns</span>
   <h1 class="headline">watch &amp; learn</h1>
   <p class="sub">Stitch-by-stitch videos, pattern breakdowns, and the fixes for the mistakes everyone makes at least once.</p>
 </header>
@@ -301,17 +336,17 @@ footer p{color:var(--ink-soft);font-size:13px;}
 
 <section style="padding-top:36px;">
   <div class="filter-pills">
-    <button class="pill active">All</button>
-    <button class="pill">Beginner</button>
-    <button class="pill">Intermediate</button>
-    <button class="pill">Advanced</button>
-    <button class="pill">Patterns</button>
-    <button class="pill">Fixes &amp; Tips</button>
+    <button class="pill active" data-filter="all">All</button>
+    <button class="pill" data-filter="beginner">Beginner</button>
+    <button class="pill" data-filter="intermediate">Intermediate</button>
+    <button class="pill" data-filter="advanced">Advanced</button>
+    <button class="pill" data-filter="patterns">Patterns</button>
+    <button class="pill" data-filter="fixes-tips">Fixes &amp; Tips</button>
   </div>
 </section>
 
 <div class="video-grid">
-  <div class="video-card">
+  <div class="video-card" data-category="beginner">
     <div class="video-thumb"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Beginner</span>
@@ -319,7 +354,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
       <p>The very first stitch — slow, close-up, no rushing.</p>
     </div>
   </div>
-  <div class="video-card">
+  <div class="video-card" data-category="beginner">
     <div class="video-thumb"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Beginner</span>
@@ -327,7 +362,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
       <p>Building rows without losing count (again).</p>
     </div>
   </div>
-  <div class="video-card">
+  <div class="video-card" data-category="fixes-tips">
     <div class="video-thumb"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Fixes &amp; Tips</span>
@@ -335,7 +370,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
       <p>No, you don't have to start over. Here's how.</p>
     </div>
   </div>
-  <div class="video-card">
+  <div class="video-card" data-category="intermediate">
     <div class="video-thumb"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Intermediate</span>
@@ -343,15 +378,34 @@ footer p{color:var(--ink-soft);font-size:13px;}
       <p>The pattern behind most of our hospital donations.</p>
     </div>
   </div>
-  <div class="video-card">
-    <div class="video-thumb"><div class="play-btn">▶</div></div>
+  <div class="video-card" data-category="patterns" data-embed="https://www.youtube.com/embed/gs5b8TjxKNU">
+    <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/gs5b8TjxKNU/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Patterns</span>
-      <h4>Amigurumi Mini Bear</h4>
-      <p>A small, huggable pattern — great for hospital visits.</p>
+      <h4>Mini Dinosaur</h4>
+      <p>One of my favorite patterns! Best of all, no sewing involved! Credits to the owner :)</p>
     </div>
+    <pre class="pattern-text" style="display:none;">R1: Magic ring, 8sc, then pull to tighten [8]
+R2: inc*8 [16]
+R3: (sc,inc)*8 [24]
+R4: (2sc, inc) [32]
+R5: (7sc, bobble) *4 [32]
+R6-R9: 32sc [32]
+R10: 7sc, 6dec, 13sc [26]
+R11: 4sc, 6dec, 10sc [20]
+R12: 2sc, 6dec, 6sc [14]
+R13: 2sc, 2 dec, 8sc [12]
+R14-R16: 12sc [12]
+R17: 10sc, 2nc [14]
+R18: 10sc, 4 inc [18]
+R19: 13sc, 2inc, 3sc [20]
+R20-R21: 20sc [20]
+R22: (3sc, dec)*4 [16]
+Insert eyes by this point, if using safety eyes
+R23: dec*8 [8]
+You can add some dec to make it smaller if you want (optional!) before cutting the yarn and weaving it in to close the top</pre>
   </div>
-  <div class="video-card">
+  <div class="video-card" data-category="advanced">
     <div class="video-thumb"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Advanced</span>
@@ -360,6 +414,91 @@ footer p{color:var(--ink-soft);font-size:13px;}
     </div>
   </div>
 </div>
+
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-video-wrap" id="modalVideoWrap">
+      <iframe id="modalVideoFrame" src="" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="modal-no-video" id="modalNoVideo">Video coming soon — check back later!</div>
+    <span class="lvl" id="modalLvl"></span>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-desc" id="modalDesc"></p>
+    <span class="modal-pattern-label" id="modalPatternLabel" style="display:none;">Written pattern</span>
+    <pre class="modal-pattern" id="modalPattern" style="display:none;"></pre>
+  </div>
+</div>
+
+<script>
+  const pills = document.querySelectorAll('.pill');
+  const cards = document.querySelectorAll('.video-card');
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  const modal = document.getElementById('videoModal');
+  const modalFrame = document.getElementById('modalVideoFrame');
+  const modalVideoWrap = document.getElementById('modalVideoWrap');
+  const modalNoVideo = document.getElementById('modalNoVideo');
+  const modalLvl = document.getElementById('modalLvl');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalPattern = document.getElementById('modalPattern');
+  const modalPatternLabel = document.getElementById('modalPatternLabel');
+  const modalClose = document.getElementById('modalClose');
+
+  function openModal(card) {
+    const embed = card.dataset.embed;
+    const lvl = card.querySelector('.lvl').textContent;
+    const title = card.querySelector('h4').textContent;
+    const desc = card.querySelector('.video-info p').textContent;
+    const patternEl = card.querySelector('.pattern-text');
+
+    modalLvl.textContent = lvl;
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+
+    if (embed) {
+      modalFrame.src = embed;
+      modalVideoWrap.style.display = '';
+      modalNoVideo.style.display = 'none';
+    } else {
+      modalFrame.src = '';
+      modalVideoWrap.style.display = 'none';
+      modalNoVideo.style.display = '';
+    }
+
+    if (patternEl) {
+      modalPattern.textContent = patternEl.textContent;
+      modalPattern.style.display = 'block';
+      modalPatternLabel.style.display = 'block';
+    } else {
+      modalPattern.style.display = 'none';
+      modalPatternLabel.style.display = 'none';
+    }
+
+    modal.classList.add('open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modalFrame.src = '';
+  }
+
+  cards.forEach(card => card.addEventListener('click', () => openModal(card)));
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>
 
 <div class="chain"></div>
 

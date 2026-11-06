@@ -218,6 +218,31 @@ section.sitemap{padding:10px 28px 60px;}
 .video-info h4{margin:0 0 6px;font-size:16px;}
 .video-info p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.5;}
 
+/* ===== MEET THE GANG ===== */
+section.gang{padding:10px 28px 60px;}
+.gang-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.gang-card{
+  background:#fff;border-radius:16px;overflow:hidden;text-align:center;padding-bottom:18px;
+  border:1px solid rgba(62,39,35,0.08);box-shadow:0 10px 22px -18px rgba(62,39,35,0.35);
+  transition:transform .15s ease;
+}
+.gang-card:hover{transform:translateY(-3px);}
+.gang-photo{
+  height:150px;background-size:cover;background-position:center;
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:36px;
+}
+.gang-photo.g1{background:linear-gradient(135deg,var(--rose),var(--butter));}
+.gang-photo.g2{background:linear-gradient(135deg,var(--denim),var(--sage));}
+.gang-photo.g3{background:linear-gradient(135deg,var(--sage),var(--butter));}
+.gang-photo.g4{background:linear-gradient(135deg,var(--butter),var(--rose));}
+.gang-photo.g-me{background:linear-gradient(135deg,var(--denim),#6f8fc2);}
+.gang-card h4{margin:14px 0 2px;font-family:'Gochi Hand',cursive;font-size:19px;color:var(--ink);}
+.gang-role{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--rose);margin-bottom:12px;}
+.gang-facts{text-align:left;padding:0 16px;}
+.gang-facts .f{margin-bottom:8px;}
+.gang-facts .f-label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.5px;text-transform:uppercase;color:var(--denim);display:block;}
+.gang-facts .f-value{display:block;color:var(--ink);font-size:12.5px;font-weight:500;line-height:1.4;}
+
 /* ===== SQUAD CORNER (blog list) ===== */
 .blog-list{max-width:720px;margin:0 auto;padding:0 28px 70px;display:flex;flex-direction:column;gap:34px;}
 .blog-post{background:#fff;border-radius:16px;padding:26px;border:1px solid rgba(62,39,35,0.08);box-shadow:0 10px 22px -18px rgba(62,39,35,0.35);}
@@ -269,6 +294,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
   .board{grid-template-columns:repeat(2,1fr);}
   .sm-grid{grid-template-columns:repeat(2,1fr);}
   .video-grid{grid-template-columns:1fr;}
+  .gang-grid{grid-template-columns:repeat(2,1fr);}
   .story-grid{grid-template-columns:1fr;}
   .contact-grid{grid-template-columns:1fr;}
   .impact-card{flex-direction:column;align-items:flex-start;}
@@ -292,24 +318,78 @@ footer p{color:var(--ink-soft);font-size:13px;}
 <div class="chain"></div>
 
 <header class="page-hero">
-  <span class="eyebrow">the friend group</span>
   <h1 class="headline">squad corner</h1>
   <p class="sub">Crochet nights with the friends who put up with my tangled yarn and questionable stitch counting.</p>
 </header>
 
 <div class="chain thin"></div>
 
+<section class="gang">
+  <h2 class="section-title">meet the gang</h2>
+  <p class="section-sub">the regulars at crochet night, faces hidden for privacy but personalities very much not</p>
+  <div class="gang-grid">
+    <div class="gang-card">
+      <div class="gang-photo g-me">📸</div>
+      <h4>Me</h4>
+      <div class="gang-role">the hook behind hooked</div>
+      <div class="gang-facts">
+        <div class="f"><span class="f-label">Favorite hook size</span><span class="f-value">4.0mm (G/6)</span></div>
+        <div class="f"><span class="f-label">Favorite yarn</span><span class="f-value">cotton blends</span></div>
+        <div class="f"><span class="f-label">Crochet style</span><span class="f-value">amigurumi, mostly</span></div>
+        <div class="f"><span class="f-label">Can't stop making</span><span class="f-value">tiny stuffed animals</span></div>
+      </div>
+    </div>
+    <div class="gang-card">
+      <div class="gang-photo g1">🧶</div>
+      <h4>The Night Owl</h4>
+      <div class="gang-role">crochets past 2am, no regrets</div>
+      <div class="gang-facts">
+        <div class="f"><span class="f-label">Favorite hook size</span><span class="f-value">5.0mm (H/8)</span></div>
+        <div class="f"><span class="f-label">Favorite yarn</span><span class="f-value">chunky acrylic</span></div>
+        <div class="f"><span class="f-label">Crochet style</span><span class="f-value">blankets, always blankets</span></div>
+        <div class="f"><span class="f-label">Current WIP</span><span class="f-value">a blanket that may never end</span></div>
+      </div>
+    </div>
+    <div class="gang-card">
+      <div class="gang-photo g2">🧶</div>
+      <h4>Granny Square Queen</h4>
+      <div class="gang-role">will out-square you every time</div>
+      <div class="gang-facts">
+        <div class="f"><span class="f-label">Favorite hook size</span><span class="f-value">3.5mm (E/4)</span></div>
+        <div class="f"><span class="f-label">Favorite yarn</span><span class="f-value">whatever scraps are left</span></div>
+        <div class="f"><span class="f-label">Crochet style</span><span class="f-value">granny squares, obviously</span></div>
+        <div class="f"><span class="f-label">Known for</span><span class="f-value">a truly chaotic stash</span></div>
+      </div>
+    </div>
+    <div class="gang-card">
+      <div class="gang-photo g3">🧶</div>
+      <h4>The Perfectionist</h4>
+      <div class="gang-role">frogs more than she finishes</div>
+      <div class="gang-facts">
+        <div class="f"><span class="f-label">Favorite hook size</span><span class="f-value">2.75mm (C/2)</span></div>
+        <div class="f"><span class="f-label">Favorite yarn</span><span class="f-value">fine cotton thread</span></div>
+        <div class="f"><span class="f-label">Crochet style</span><span class="f-value">tiny, precise amigurumi</span></div>
+        <div class="f"><span class="f-label">Known for</span><span class="f-value">ripping out a "perfect" row anyway</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chain thin"></div>
+
 <div class="blog-list" style="margin-top:36px;">
   <div class="blog-post">
-    <div class="meta">Crochet Night · Entry 01</div>
-    <h3>The Great Granny Square Marathon</h3>
-    <p>Four of us, one pizza, and a pile of yarn scraps — we set out to finish six squares each and only sort of succeeded. Turns out crochet nights are 20% crochet and 80% talking over each other.</p>
+    <div class="meta">Crochet Night</div>
+    <h3>Yarn Chicken, Lost</h3>
+    <p>Played a round of yarn chicken and lost...had a feeling there wasn't enough yarn to complete the dinosaur and it proved true. Ended up finishing up with a vastly different yarn color, but at least now it's multicolored and has more personality!</p>
     <div class="blog-photos">
-      <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+      <div class="ph" style="background-image:url('images/yarn-chicken-1.jpg');background-size:cover;background-position:center;"></div>
+      <div class="ph" style="background-image:url('images/yarn-chicken-2.jpg');background-size:cover;background-position:center;"></div>
+      <div class="ph" style="background-image:url('images/yarn-chicken-3.jpg');background-size:cover;background-position:center;"></div>
     </div>
   </div>
   <div class="blog-post">
-    <div class="meta">Crochet Night · Entry 02</div>
+    <div class="meta">Crochet Night</div>
     <h3>Teaching a Friend Her First Stitch</h3>
     <p>Watched a friend go from "I'll never get this" to finishing an entire chain in one sitting. Small win, big celebration — we may have made too big a deal out of it.</p>
     <div class="blog-photos">
@@ -317,7 +397,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
     </div>
   </div>
   <div class="blog-post">
-    <div class="meta">Crochet Night · Entry 03</div>
+    <div class="meta">Crochet Night</div>
     <h3>Yarn Swap Sunday</h3>
     <p>Everyone brought leftover skeins nobody was using and traded for new colors. Ended up with a bag of mismatched yarn and zero regrets.</p>
     <div class="blog-photos">
