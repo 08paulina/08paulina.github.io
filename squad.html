@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hooked — Squad Corner</title>
+<title>Hooked | Squad Corner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Space+Mono:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -220,7 +220,9 @@ section.sitemap{padding:10px 28px 60px;}
 
 /* ===== MEET THE GANG ===== */
 section.gang{padding:10px 28px 60px;}
-.gang-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.gang-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+.gang-facts .f-value.tbd{color:var(--ink-soft);font-style:italic;font-weight:400;}
+@media (max-width:1000px){ .gang-grid{grid-template-columns:repeat(3,1fr);} }
 .gang-card{
   background:#fff;border-radius:16px;overflow:hidden;text-align:center;padding-bottom:18px;
   border:1px solid rgba(62,39,35,0.08);box-shadow:0 10px 22px -18px rgba(62,39,35,0.35);
@@ -360,7 +362,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
       </div>
     </div>
     <div class="gang-card">
-      <div class="gang-photo" style="background-image:url('images/kiwi.jpg');background-size:cover;background-position:center;"></div>
+      <div class="gang-photo" style="background-image:url('images/kiwi.jpg');background-size:cover;background-position:center 9%;"></div>
       <h4>Kiwi</h4>
       <div class="gang-role">my day 1</div>
       <div class="gang-facts">
@@ -382,14 +384,25 @@ footer p{color:var(--ink-soft);font-size:13px;}
       </div>
     </div>
     <div class="gang-card">
-      <div class="gang-photo g3">🧶</div>
-      <h4>The Perfectionist</h4>
-      <div class="gang-role">frogs more than she finishes</div>
+      <div class="gang-photo g4">🍊</div>
+      <h4>Orange</h4>
+      <div class="gang-role">more info coming soon</div>
       <div class="gang-facts">
-        <div class="f"><span class="f-label">Favorite hook size</span><span class="f-value">2.75mm (C/2)</span></div>
-        <div class="f"><span class="f-label">Favorite yarn</span><span class="f-value">fine cotton thread</span></div>
-        <div class="f"><span class="f-label">Crochet style</span><span class="f-value">tiny, precise amigurumi</span></div>
-        <div class="f"><span class="f-label">Known for</span><span class="f-value">ripping out a "perfect" row anyway</span></div>
+        <div class="f"><span class="f-label">Favorite hook size</span><span class="f-value">3.0mm</span></div>
+        <div class="f"><span class="f-label">Favorite yarn</span><span class="f-value">medium (weight 4) acrylic</span></div>
+        <div class="f"><span class="f-label">Crochet style</span><span class="f-value">base off a tutorial, then adjust as needed</span></div>
+        <div class="f"><span class="f-label">Known for</span><span class="f-value">keychain biodiversity</span></div>
+      </div>
+    </div>
+    <div class="gang-card">
+      <div class="gang-photo g2">🧶</div>
+      <h4>???</h4>
+      <div class="gang-role">name coming soon</div>
+      <div class="gang-facts">
+        <div class="f"><span class="f-label">Favorite hook size</span><span class="f-value">5.0mm</span></div>
+        <div class="f"><span class="f-label">Favorite yarn</span><span class="f-value">medium (weight 4) acrylic</span></div>
+        <div class="f"><span class="f-label">Crochet style</span><span class="f-value tbd">coming soon</span></div>
+        <div class="f"><span class="f-label">Known for</span><span class="f-value tbd">coming soon</span></div>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hooked — Watch &amp; Learn</title>
+<title>Hooked | Watch &amp; Learn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Space+Mono:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -196,7 +196,7 @@ section.sitemap{padding:10px 28px 60px;}
 .filter-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
 .pill{
   font-family:'Space Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;
-  padding:8px 16px;border-radius:20px;border:1.5px solid var(--ink);background:#fff;cursor:pointer;
+  padding:8px 16px;border-radius:20px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;
 }
 .pill.active{background:var(--ink);color:var(--paper);}
 .video-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:0 28px 70px;}
@@ -351,7 +351,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
     <div class="video-info">
       <span class="lvl">Beginner</span>
       <h4>Chain Stitch, Start to Finish</h4>
-      <p>The very first stitch — slow, close-up, no rushing.</p>
+      <p>The very first stitch: slow, close-up, no rushing.</p>
     </div>
   </div>
   <div class="video-card" data-category="beginner">
@@ -362,20 +362,12 @@ footer p{color:var(--ink-soft);font-size:13px;}
       <p>Building rows without losing count (again).</p>
     </div>
   </div>
-  <div class="video-card" data-category="fixes-tips">
-    <div class="video-thumb"><div class="play-btn">▶</div></div>
-    <div class="video-info">
-      <span class="lvl">Fixes &amp; Tips</span>
-      <h4>Fixing a Dropped Stitch</h4>
-      <p>No, you don't have to start over. Here's how.</p>
-    </div>
-  </div>
   <div class="video-card" data-category="intermediate">
     <div class="video-thumb"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Intermediate</span>
       <h4>Granny Square Blanket Pattern</h4>
-      <p>The pattern behind most of our hospital donations.</p>
+      <p>A classic, and a great first big project.</p>
     </div>
   </div>
   <div class="video-card" data-category="patterns" data-embed="https://www.youtube.com/embed/gs5b8TjxKNU">
@@ -388,7 +380,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
     <pre class="pattern-text" style="display:none;">R1: Magic ring, 8sc, then pull to tighten [8]
 R2: inc*8 [16]
 R3: (sc,inc)*8 [24]
-R4: (2sc, inc) [32]
+R4: (2sc, inc)*8 [32]
 R5: (7sc, bobble) *4 [32]
 R6-R9: 32sc [32]
 R10: 7sc, 6dec, 13sc [26]
@@ -404,6 +396,22 @@ R22: (3sc, dec)*4 [16]
 Insert eyes by this point, if using safety eyes
 R23: dec*8 [8]
 You can add some dec to make it smaller if you want (optional!) before cutting the yarn and weaving it in to close the top</pre>
+  </div>
+
+  <div class="video-card" data-category="patterns" data-embed="https://www.youtube.com/embed/1zE0Edn9LVo">
+    <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/1zE0Edn9LVo/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
+    <div class="video-info">
+      <span class="lvl">Patterns</span>
+      <h4>Mini Loaf Chicken</h4>
+      <p>A cute and simple pattern! They remind me of those Stardew Valley chickens haha. Credits to the owner!!</p>
+    </div>
+    <pre class="pattern-text" style="display:none;">R1: 8sc in mr, slst into the first sc (8)
+R2: 8inc, slst to the first st (16)
+R3: (1inc, 1sc) *8 (24)
+R4-R8: 24sc (24)
+R9: fold bowl in half, slst into the first stitches, (ch2, sc1 in the next pair of stitches)*2, 2ch, slst, stuff the chicken, 5slst, fasten off
+Attach the red yarn, (3ch, 1sc in the next pair of stitches)*2, 1sc (last one a bit tighter than the rest), fasten off (sew the ends in)
+Embroider the beak, use your preferred method of attaching eyes</pre>
   </div>
   <div class="video-card" data-category="advanced">
     <div class="video-thumb"><div class="play-btn">▶</div></div>
@@ -421,7 +429,7 @@ You can add some dec to make it smaller if you want (optional!) before cutting t
     <div class="modal-video-wrap" id="modalVideoWrap">
       <iframe id="modalVideoFrame" src="" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <div class="modal-no-video" id="modalNoVideo">Video coming soon — check back later!</div>
+    <div class="modal-no-video" id="modalNoVideo">Video coming soon. Check back later!</div>
     <span class="lvl" id="modalLvl"></span>
     <h3 id="modalTitle"></h3>
     <p class="modal-desc" id="modalDesc"></p>

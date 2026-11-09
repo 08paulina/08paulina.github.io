@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hooked — Home</title>
+<title>Hooked | Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Space+Mono:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -90,6 +90,16 @@ h1.headline .accent{color:var(--rose);}
 .btn-primary{background:var(--ink);color:var(--paper);}
 .btn-ghost{background:transparent;color:var(--ink);}
 .cta-row{display:flex;gap:14px;justify-content:center;margin-top:26px;flex-wrap:wrap;}
+html{scroll-behavior:smooth;}
+.scroll-cue{
+  display:inline-flex;flex-direction:column;align-items:center;gap:4px;margin-top:30px;
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;
+}
+.scroll-cue:hover{color:var(--rose);}
+.cue-arrow{font-size:20px;animation:bob 1.8s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+@media (prefers-reduced-motion: reduce){ .cue-arrow{animation:none;} html{scroll-behavior:auto;} }
 
 /* HOMEPAGE HERO PHOTO */
 .hero-photo{
@@ -201,6 +211,89 @@ section.gallery{padding:10px 28px 70px;}
 .polaroid .cap{font-family:'Space Mono',monospace;font-size:10px;text-align:center;color:var(--ink-soft);margin-top:8px;}
 .tape{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);width:46px;height:16px;background:rgba(242,201,76,0.55);}
 
+/* ===== HOME: SECTION PEEKS ===== */
+section.peek{padding:46px 28px 50px;}
+.peek-inner{max-width:1080px;margin:0 auto;}
+.peek-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px 30px;flex-wrap:wrap;margin-bottom:26px;}
+.peek-head h2{font-family:'Gochi Hand',cursive;font-size:40px;line-height:1;margin:0 0 8px;}
+.peek-head p{margin:0;color:var(--ink-soft);font-size:15px;line-height:1.6;max-width:520px;}
+.peek .tag{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:12px;color:#fff;
+}
+.see-more{font-size:14px;padding:10px 20px;white-space:nowrap;}
+.see-more .arr{display:inline-block;transition:transform .15s ease;}
+.see-more:hover .arr{transform:translateX(3px);}
+
+/* tutorials peek */
+.peek-videos{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.peek-videos .video-thumb{height:220px;}
+a.video-card{display:block;text-decoration:none;color:var(--ink);}
+.video-card .video-thumb.has-thumb{background-size:cover;background-position:center;}
+
+/* squad peek */
+.peek-squad{display:grid;grid-template-columns:0.85fr 1.15fr;gap:24px;align-items:stretch;}
+.peek-squad > *, .latest-post > *, .peek-videos > *{min-width:0;}
+.squad-roster{background:var(--paper-2);border-radius:16px;padding:24px;}
+.squad-roster .mini-label{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--denim);display:block;margin-bottom:16px;}
+.roster{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 14px;}
+.mate{display:flex;align-items:center;gap:12px;}
+.avatar{
+  width:54px;height:54px;border-radius:50%;flex-shrink:0;border:3px solid #fff;
+  box-shadow:0 6px 12px -8px rgba(62,39,35,0.5);
+  background-size:cover;background-position:center;
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.av-me{background:linear-gradient(135deg,var(--denim),#6f8fc2);}
+.av-orange{background:linear-gradient(135deg,var(--butter),var(--rose));}
+.av-perf{background:linear-gradient(135deg,var(--sage),var(--butter));}
+.mate .nm{font-family:'Gochi Hand',cursive;font-size:19px;line-height:1.1;display:block;}
+.mate .rl{font-size:11.5px;color:var(--ink-soft);line-height:1.35;display:block;}
+.latest-post{
+  background:#fff;border-radius:16px;padding:24px;border:1px solid rgba(62,39,35,0.08);
+  box-shadow:0 10px 22px -18px rgba(62,39,35,0.35);display:grid;grid-template-columns:1fr 150px;gap:20px;
+}
+.latest-post .meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--denim);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.latest-post h3{margin:0 0 8px;font-size:21px;}
+.latest-post p{margin:0 0 14px;color:var(--ink-soft);line-height:1.6;font-size:14px;}
+.mini-stats{display:flex;gap:20px;flex-wrap:wrap;}
+.mini-stats .f-label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--denim);display:block;margin-bottom:2px;}
+.mini-stats .f-value{font-size:18px;font-weight:700;color:var(--rose);}
+.post-photos{display:flex;flex-direction:column;gap:10px;}
+.post-photos .ph{flex:1;min-height:80px;border-radius:10px;background-size:cover;background-position:center;}
+
+/* giving back peek */
+.give-card{
+  background:var(--ink);color:var(--paper);border-radius:18px;padding:40px 36px;
+  display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;position:relative;overflow:hidden;
+}
+.give-card::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle at 8px 8px, rgba(255,255,255,0.06) 3px, transparent 3.5px);
+  background-size:26px 26px;
+}
+.give-card > *{position:relative;z-index:1;}
+.give-card .tag{margin-bottom:14px;}
+.give-card h2{font-family:'Gochi Hand',cursive;font-size:40px;line-height:1;margin:0 0 12px;}
+.give-card p{color:#d9c8be;font-size:14.5px;line-height:1.65;margin:0 0 22px;max-width:420px;}
+.btn-light{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+.stops{display:flex;flex-direction:column;gap:14px;}
+.stop{background:rgba(255,255,255,0.07);border-radius:14px;padding:16px 18px;display:flex;align-items:center;gap:14px;}
+.stop .what{font-weight:600;font-size:15px;color:var(--paper);display:block;}
+.stop .num{width:34px;height:34px;border-radius:50%;background:var(--butter);color:var(--ink);font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.stop .where{display:block;}
+.stop .arrow{color:var(--butter);font-family:'Space Mono',monospace;font-size:16px;flex-shrink:0;}
+.stop .where{font-size:13.5px;color:#d9c8be;}
+.stop .kind{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:3px;}
+
+/* say hi peek */
+.hi-band{
+  background:#fff;border:2px dashed rgba(62,39,35,0.22);border-radius:18px;padding:30px 32px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.hi-band h2{font-family:'Gochi Hand',cursive;font-size:32px;line-height:1.05;margin:0 0 6px;}
+.hi-band p{margin:0;color:var(--ink-soft);font-size:14.5px;}
+
 /* SITEMAP PREVIEW STRIP (home) */
 section.sitemap{padding:10px 28px 60px;}
 .sitemap-head{text-align:center;margin-bottom:28px;}
@@ -304,6 +397,14 @@ footer p{color:var(--ink-soft);font-size:13px;}
   .contact-grid{grid-template-columns:1fr;}
   .impact-card{flex-direction:column;align-items:flex-start;}
   .navlinks{display:none;}
+  .peek-videos{grid-template-columns:1fr;}
+  .peek-videos .video-thumb{height:180px;}
+  .peek-squad{grid-template-columns:1fr;}
+  .latest-post{grid-template-columns:1fr;}
+  .post-photos{flex-direction:row;}
+  .post-photos .ph{height:110px;}
+  .give-card{grid-template-columns:1fr;padding:32px 24px;}
+  .peek-head h2, .give-card h2{font-size:34px;}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
 
@@ -324,17 +425,14 @@ footer p{color:var(--ink-soft);font-size:13px;}
 
 <header class="page-hero">
   <h1 class="headline big">one stitch,<br>one <span class="accent">gift</span>, at a time</h1>
-  <p class="sub">Tutorials, patterns, and behind-the-hook moments — plus every finished piece finds its way to someone who needs a little warmth.</p>
-  <div class="hero-photo">[ hero photo — her mid-project ]</div>
-  <div class="cta-row">
-    <a class="btn btn-primary" href="tutorials.html">Watch the latest video</a>
-    <a class="btn btn-ghost" href="giving-back.html">See where it went</a>
-  </div>
+  <p class="sub">Tutorials, patterns, and behind-the-hook moments. Plus, every finished piece finds its way to someone who needs a little warmth.</p>
+  <div class="hero-photo">[ hero photo: her mid-project ]</div>
+  <a class="scroll-cue" href="#about">take a peek around<span class="cue-arrow">↓</span></a>
 </header>
 
 <div class="chain thin"></div>
 
-<section class="about">
+<section class="about" id="about">
   <div class="about-grid">
     <div class="about-video-wrap">
       <div>
@@ -346,38 +444,19 @@ footer p{color:var(--ink-soft);font-size:13px;}
     </div>
     <div class="about-text">
       <h2>hi, i'm the hook behind hooked</h2>
-      <p>I pick up a hook, find a base pattern, and then just... experiment from there. Most of what ends up here starts as a half-formed idea and a pile of acrylic yarn, and somehow turns into a dinosaur.</p>
-      <p>This is a little peek at what that actually looks like — sped up, because real-time crocheting a dinosaur is a lot of sitting very still for a very long time.</p>
+      <p>It all started with a scarf my aunt crocheted for me. One look at it and I thought: wait, could <em>I</em> make one of these? A lot of practice later, the answer is yes, and my room is now home to a small army of dinosaurs, bears, and a few creatures that remain unidentified.</p>
+      <p>Then I started bringing projects to school, and people kept asking what I was making. My answer was always some version of "want me to show you?" A few hooks and a lot of tangled yarn later, my friends were crocheting too, and Hooked was born: a nonprofit where we turn all those stitches into stuffed animals for kids in need. (And honestly? Getting to hang out together while we do it is half the fun.)</p>
+      <p>The video is a little peek at what that actually looks like. It's sped up, because real-time crocheting a dinosaur is a lot of sitting very still for a very long time.</p>
       <div class="about-facts">
-        <div><span class="f-label">Favorite hook size</span><span class="f-value">4.25mm</span></div>
-        <div><span class="f-label">Favorite yarn</span><span class="f-value">DK / weight 3 acrylic</span></div>
-        <div><span class="f-label">Known for</span><span class="f-value">an abundance of dinosaurs</span></div>
+        <div><span class="f-label">What it is</span><span class="f-value">a student-run nonprofit</span></div>
+        <div><span class="f-label">Made by</span><span class="f-value">me + volunteer crocheters</span></div>
+        <div><span class="f-label">Goes to</span><span class="f-value">children in need</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <div class="chain thin"></div>
-
-<section class="tiles">
-  <div class="tile-grid">
-    <a class="tile" href="tutorials.html">
-      <span class="tag tag-denim">tutorials</span>
-      <h3>Watch &amp; Learn</h3>
-      <p>Stitch breakdowns, pattern walk-throughs, and the mistakes-turned-lessons that actually teach you something.</p>
-    </a>
-    <a class="tile" href="squad.html">
-      <span class="tag tag-rose">community</span>
-      <h3>Squad Corner</h3>
-      <p>Crochet nights with friends — snacks, tangled yarn, and a lot of laughing at dropped stitches.</p>
-    </a>
-    <a class="tile" href="giving-back.html">
-      <span class="tag tag-sage">impact</span>
-      <h3>Giving Back</h3>
-      <p>Every finished blanket, hat, or lovey has a destination — a hospital room or a senior living room.</p>
-    </a>
-  </div>
-</section>
 
 <section class="gallery">
   <h2 class="section-title">from the yarn shelf</h2>
@@ -389,32 +468,113 @@ footer p{color:var(--ink-soft);font-size:13px;}
   </div>
 </section>
 
-<section class="sitemap">
-  <div class="wrap">
-    <div class="sitemap-head">
-      <h2 class="section-title">more to explore</h2>
+<div class="chain thin"></div>
+
+<!-- PEEK: WATCH & LEARN -->
+<section class="peek">
+  <div class="peek-inner">
+    <div class="peek-head">
+      <div>
+        <span class="tag tag-denim">tutorials</span>
+        <h2>watch &amp; learn</h2>
+        <p>Stitch-by-stitch videos and pattern breakdowns. Here are a couple of my favorites to start with.</p>
+      </div>
+      <a class="btn btn-ghost see-more" href="tutorials.html">See all tutorials <span class="arr">→</span></a>
     </div>
-    <div class="sm-grid">
-      <a class="sm-card" href="tutorials.html">
-        <div class="sm-thumb sm-thumb-a"><span class="sm-chip">Tutorials</span></div>
-        <h4>Watch &amp; Learn</h4>
-        <p>Every video, sorted by stitch &amp; skill level</p>
+    <div class="peek-videos">
+      <a class="video-card" href="tutorials.html">
+        <div class="video-thumb has-thumb" style="background-image:url('https://img.youtube.com/vi/gs5b8TjxKNU/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <span class="lvl">Patterns</span>
+          <h4>Mini Dinosaur</h4>
+          <p>One of my favorite patterns, and no sewing involved!</p>
+        </div>
       </a>
-      <a class="sm-card" href="squad.html">
-        <div class="sm-thumb sm-thumb-b"><span class="sm-chip">Squad</span></div>
-        <h4>Squad Corner</h4>
-        <p>Crochet night recaps &amp; friend features</p>
+      <a class="video-card" href="tutorials.html">
+        <div class="video-thumb has-thumb" style="background-image:url('https://img.youtube.com/vi/1zE0Edn9LVo/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <span class="lvl">Patterns</span>
+          <h4>Mini Loaf Chicken</h4>
+          <p>A cute and simple pattern that looks like a Stardew Valley chicken.</p>
+        </div>
       </a>
-      <a class="sm-card" href="giving-back.html">
-        <div class="sm-thumb sm-thumb-c"><span class="sm-chip">Impact</span></div>
-        <h4>Giving Back</h4>
-        <p>Where every finished piece ends up</p>
+    </div>
+  </div>
+</section>
+
+<div class="chain thin"></div>
+
+<!-- PEEK: SQUAD CORNER -->
+<section class="peek">
+  <div class="peek-inner">
+    <div class="peek-head">
+      <div>
+        <span class="tag tag-rose">community</span>
+        <h2>squad corner</h2>
+        <p>Crochet nights with the friends who put up with my tangled yarn and questionable stitch counting.</p>
+      </div>
+      <a class="btn btn-ghost see-more" href="squad.html">Meet the squad <span class="arr">→</span></a>
+    </div>
+    <div class="peek-squad">
+      <div class="squad-roster">
+        <span class="mini-label">the regulars</span>
+        <div class="roster">
+          <div class="mate"><div class="avatar av-me">📸</div><div><span class="nm">Me</span><span class="rl">the hook behind hooked</span></div></div>
+          <div class="mate"><div class="avatar" style="background-image:url('images/kiwi.jpg');background-position:center top;"></div><div><span class="nm">Kiwi</span><span class="rl">my day 1</span></div></div>
+          <div class="mate"><div class="avatar" style="background-image:url('images/passionfruit.jpg');"></div><div><span class="nm">Passionfruit</span><span class="rl">currently on WIP #47</span></div></div>
+          <div class="mate"><div class="avatar av-orange">🍊</div><div><span class="nm">Orange</span><span class="rl">keychain biodiversity</span></div></div>
+          <div class="mate"><div class="avatar av-perf">🧶</div><div><span class="nm">???</span><span class="rl">name coming soon</span></div></div>
+        </div>
+      </div>
+      <a class="latest-post" href="squad.html" style="text-decoration:none;color:inherit;">
+        <div>
+          <div class="meta">Latest · Crochet Day</div>
+          <h3>Operation Untangle</h3>
+          <p>A bin of yarn scraps turned into an actual knotted mess, so one crochet day became a group untangling mission instead...</p>
+          <div class="mini-stats">
+            <div><span class="f-label">WIPs rescued</span><span class="f-value">3</span></div>
+            <div><span class="f-label">Useable skeins</span><span class="f-value">9</span></div>
+          </div>
+        </div>
+        <div class="post-photos">
+          <div class="ph" style="background-image:url('images/tangled-yarn.jpg');"></div>
+          <div class="ph" style="background-image:url('images/untangled-yarn.jpg');"></div>
+        </div>
       </a>
-      <a class="sm-card" href="contact.html">
-        <div class="sm-thumb sm-thumb-d"><span class="sm-chip">Contact</span></div>
-        <h4>Say Hi</h4>
-        <p>Follow along or request a pattern</p>
-      </a>
+    </div>
+  </div>
+</section>
+
+<div class="chain thin"></div>
+
+<!-- PEEK: GIVING BACK -->
+<section class="peek">
+  <div class="peek-inner">
+    <div class="give-card">
+      <div>
+        <span class="tag tag-sage">impact</span>
+        <h2>giving back</h2>
+        <p>Every crocheted dinosaur, bear, and mystery creature we make has one job: becoming a new friend for a kid who needs one.</p>
+        <a class="btn btn-light see-more" href="giving-back.html">See how it works <span class="arr">→</span></a>
+      </div>
+      <div class="stops">
+        <div class="stop"><span class="num">1</span><div><span class="what">we learn</span><span class="where">friends and classmates pick up a hook</span></div></div>
+        <div class="stop"><span class="num">2</span><div><span class="what">we make</span><span class="where">stuffed animals, crocheted by hand</span></div></div>
+        <div class="stop"><span class="num">3</span><div><span class="what">we give</span><span class="where">donated to children in need</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEEK: SAY HI -->
+<section class="peek" style="padding-top:10px;">
+  <div class="peek-inner">
+    <div class="hi-band">
+      <div>
+        <h2>got yarn to donate or a pattern request?</h2>
+        <p>Or just want to say hi? I'd love to hear from you.</p>
+      </div>
+      <a class="btn btn-primary see-more" href="contact.html">Say hi <span class="arr">→</span></a>
     </div>
   </div>
 </section>
