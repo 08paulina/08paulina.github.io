@@ -242,7 +242,7 @@ section.sitemap{padding:10px 28px 60px;}
 .contact-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:0 28px 70px;align-items:start;}
 .form-card{background:#fff;border-radius:16px;padding:28px;border:1px solid rgba(62,39,35,0.08);box-shadow:0 10px 22px -18px rgba(62,39,35,0.35);}
 .form-card label{display:block;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-soft);margin:16px 0 6px;}
-.form-card label:first-child{margin-top:0;}
+.form-card label:first-child, .form-card label:first-of-type{margin-top:0;}
 .form-card input, .form-card textarea, .form-card select{
   width:100%;padding:11px 13px;border-radius:8px;border:1.5px solid rgba(62,39,35,0.15);
   font-family:'Poppins',sans-serif;font-size:14px;background:var(--paper);color:var(--ink);
@@ -276,6 +276,27 @@ footer p{color:var(--ink-soft);font-size:13px;}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
 
+.hp{position:absolute;left:-9999px;opacity:0;pointer-events:none;}
+.form-card{position:relative;}
+.form-status{font-size:13.5px;margin:12px 0 0;line-height:1.5;min-height:1px;}
+.form-status.ok{color:#4f7a4c;font-weight:600;}
+.form-status.err{color:#b4533e;font-weight:600;}
+.btn[disabled]{opacity:0.6;cursor:wait;transform:none;box-shadow:none;}
+.follow-note{font-size:14px;color:#d9c8be;line-height:1.6;margin:0 0 18px;}
+.follow-note.small{font-size:12px;margin:18px 0 0;font-family:'Space Mono',monospace;letter-spacing:0.5px;}
+.email-link{
+  display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--paper);
+  background:rgba(255,255,255,0.08);padding:14px 16px;border-radius:10px;font-size:14.5px;font-weight:500;
+  overflow-wrap:anywhere;
+}
+.email-link:hover{background:rgba(255,255,255,0.15);}
+.email-icon{color:var(--butter);font-size:18px;flex-shrink:0;}
+.copy-btn{
+  margin-top:10px;background:none;border:1.5px solid rgba(250,243,232,0.4);color:var(--paper);
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  padding:8px 14px;border-radius:20px;cursor:pointer;
+}
+.copy-btn:hover{border-color:var(--paper);}
 </style>
 </head>
 <body>
@@ -299,31 +320,35 @@ footer p{color:var(--ink-soft);font-size:13px;}
 <div class="chain thin"></div>
 
 <div class="contact-grid" style="margin-top:36px;">
-  <div class="form-card">
+  <form class="form-card" id="contactForm" novalidate>
+    <input type="hidden" name="access_key" value="d495f876-a021-4367-850f-c64445287a07">
+    <input type="hidden" name="from_name" value="Hooked website">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label for="name">First name</label>
-    <input id="name" type="text" placeholder="Your first name">
+    <input id="name" name="name" type="text" placeholder="Your first name" required>
+    <label for="email">Your email</label>
+    <input id="email" name="email" type="email" placeholder="So we can write back" required>
     <label for="reason">What's this about?</label>
-    <select id="reason">
+    <select id="reason" name="reason">
       <option>Yarn donation</option>
       <option>Pattern request</option>
       <option>Volunteering / crocheting with us</option>
       <option>Just saying hi</option>
     </select>
     <label for="msg">Message</label>
-    <textarea id="msg" placeholder="Tell me a bit more..."></textarea>
+    <textarea id="msg" name="message" placeholder="Tell us a bit more..." required></textarea>
     <div style="margin-top:20px;">
-      <button class="btn btn-primary" type="button">Send message</button>
+      <button class="btn btn-primary" type="submit" id="sendBtn">Send message</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </div>
-  </div>
+  </form>
 
   <div class="follow-card">
-    <h3>find us elsewhere</h3>
-    <div class="follow-links">
-      <a href="#">Instagram <span>→</span></a>
-      <a href="#">YouTube <span>→</span></a>
-      <a href="#">TikTok <span>→</span></a>
-      <a href="#">Email <span>→</span></a>
-    </div>
+    <h3>or just email us</h3>
+    <p class="follow-note">Rather write from your own inbox? Send us a note anytime.</p>
+    <a class="email-link" href="mailto:hello.hookedcrochet@gmail.com"><span class="email-icon">✉</span><span>hello.hookedcrochet@gmail.com</span></a>
+    <button class="copy-btn" type="button" id="copyBtn">Copy address</button>
+    <p class="follow-note small">More places to find us coming soon!</p>
   </div>
 </div>
 
@@ -334,5 +359,56 @@ footer p{color:var(--ink-soft);font-size:13px;}
   <p>Made with a hook, some yarn, and way too many stitch markers.</p>
 </footer>
 
+<script>
+  const EMAIL = 'hello.hookedcrochet@gmail.com';
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+  const sendBtn = document.getElementById('sendBtn');
+  function setStatus(text, kind) {
+    statusEl.textContent = text;
+    statusEl.className = 'form-status' + (kind ? ' ' + kind : '');
+  }
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    if (!name || !message) { setStatus('Please add your name and a message.', 'err'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setStatus('Please add a valid email so we can write back.', 'err'); return; }
+    const data = new FormData(form);
+    data.append('subject', form.reason.value + ' from ' + name + ' (Hooked website)');
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending...';
+    setStatus('', '');
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+      const json = await res.json();
+      if (json.success) {
+        form.reset();
+        setStatus("Message sent! Thanks for saying hi, we'll get back to you soon.", 'ok');
+      } else {
+        setStatus("Hmm, that didn't go through. Try again, or email us directly at " + EMAIL + '.', 'err');
+      }
+    } catch (err) {
+      setStatus("Hmm, that didn't go through. Try again, or email us directly at " + EMAIL + '.', 'err');
+    }
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Send message';
+  });
+  const copyBtn = document.getElementById('copyBtn');
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      copyBtn.textContent = 'Copied!';
+    } catch (e) {
+      copyBtn.textContent = EMAIL;
+    }
+    setTimeout(() => { copyBtn.textContent = 'Copy address'; }, 2000);
+  });
+</script>
 </body>
 </html>
