@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hooked | Watch &amp; Learn</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%A7%B6%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Space+Mono:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -235,6 +236,12 @@ section.sitemap{padding:10px 28px 60px;}
   font-size:26px;line-height:1;cursor:pointer;color:var(--ink-soft);padding:4px;
 }
 .modal-close:hover{color:var(--ink);}
+.modal-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;padding-right:30px;}
+.modal-tab{
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  padding:7px 14px;border-radius:20px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;
+}
+.modal-tab.active{background:var(--ink);color:var(--paper);}
 .modal-video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin-bottom:20px;background:var(--ink);}
 .modal-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
 .modal-no-video{
@@ -249,6 +256,12 @@ section.sitemap{padding:10px 28px 60px;}
   margin-top:18px;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.75;
   color:var(--ink);white-space:pre-wrap;border-left:4px solid var(--sage);
 }
+.modal-tip{
+  display:block;width:100%;text-align:left;margin:12px 0 4px;padding:11px 14px;border-radius:10px;
+  background:var(--paper-2);border:1.5px dashed rgba(74,111,165,0.45);color:var(--denim);
+  font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;line-height:1.45;
+}
+.modal-tip:hover{background:#efe3cf;}
 .modal-pattern-label{
   font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;
   color:var(--sage);display:block;margin:18px 0 -4px;
@@ -312,6 +325,8 @@ footer p{color:var(--ink-soft);font-size:13px;}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
 
+.empty-msg{text-align:center;color:var(--ink-soft);font-size:15px;margin:-30px auto 70px;padding:0 28px;}
+.empty-msg[hidden]{display:none;}
 </style>
 </head>
 <body>
@@ -337,40 +352,58 @@ footer p{color:var(--ink-soft);font-size:13px;}
 <section style="padding-top:36px;">
   <div class="filter-pills">
     <button class="pill active" data-filter="all">All</button>
-    <button class="pill" data-filter="beginner">Beginner</button>
-    <button class="pill" data-filter="intermediate">Intermediate</button>
-    <button class="pill" data-filter="advanced">Advanced</button>
+    <button class="pill" data-filter="basics">The Basics</button>
     <button class="pill" data-filter="patterns">Patterns</button>
     <button class="pill" data-filter="fixes-tips">Fixes &amp; Tips</button>
   </div>
 </section>
 
 <div class="video-grid">
-  <div class="video-card" data-category="beginner">
-    <div class="video-thumb"><div class="play-btn">▶</div></div>
+  <div class="video-card" data-category="basics" data-embed="https://www.youtube.com/embed/rejUEudPslM">
+    <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/rejUEudPslM/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
     <div class="video-info">
-      <span class="lvl">Beginner</span>
-      <h4>Chain Stitch, Start to Finish</h4>
-      <p>The very first stitch: slow, close-up, no rushing.</p>
+      <span class="lvl">The Basics</span>
+      <h4>Slip Knot (a Few Ways!)</h4>
+      <p>The slip knot is where almost every crochet project begins. Other than the magic ring, it's basically the foundation of everything! There are so many ways to make one, and everyone has the one that works for them! The first video is closest to how I make mine, and the second shows a few more methods. Try them out and see which one clicks. Credits to the owners of the videos!</p>
+    </div>
+    <div class="alt-videos" hidden>
+      <span data-embed="https://www.youtube.com/embed/rejUEudPslM">My go-to method</span>
+      <span data-embed="https://www.youtube.com/embed/P4yMvLONsY0">More methods</span>
     </div>
   </div>
-  <div class="video-card" data-category="beginner">
-    <div class="video-thumb"><div class="play-btn">▶</div></div>
+  <div class="video-card" data-category="basics" data-embed="https://www.youtube.com/embed/7v-mssy5rKU">
+    <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/7v-mssy5rKU/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
     <div class="video-info">
-      <span class="lvl">Beginner</span>
-      <h4>Single Crochet Basics</h4>
-      <p>Building rows without losing count (again).</p>
+      <span class="lvl">The Basics</span>
+      <h4>Chain Stitch (ch)</h4>
+      <p>Chain stitches usually come right after the slip knot to get a project started, and you'll find them in all sorts of patterns too. Credits to the owner of the video!</p>
     </div>
   </div>
-  <div class="video-card" data-category="intermediate">
-    <div class="video-thumb"><div class="play-btn">▶</div></div>
+  <div class="video-card" data-category="basics" data-embed="https://www.youtube.com/embed/BX62bqMrHxs">
+    <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/BX62bqMrHxs/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
     <div class="video-info">
-      <span class="lvl">Intermediate</span>
-      <h4>Granny Square Blanket Pattern</h4>
-      <p>A classic, and a great first big project.</p>
+      <span class="lvl">The Basics</span>
+      <h4>Single Crochet (sc)</h4>
+      <p>One of the first stitches most people learn! Once you get the hang of it, a lot of other stitches work the same way, just with a different number of loops on your hook. Credits to the owner of the video!</p>
     </div>
   </div>
-  <div class="video-card" data-category="patterns" data-embed="https://www.youtube.com/embed/gs5b8TjxKNU">
+  <div class="video-card" id="magicRingCard" data-category="basics" data-embed="https://www.youtube.com/embed/zsWmVcp9RMU">
+    <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/zsWmVcp9RMU/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
+    <div class="video-info">
+      <span class="lvl">The Basics</span>
+      <h4>Magic Ring (Magic Circle)</h4>
+      <p>Beginners usually get intimidated by this one (I did too!), but it's really not too bad! You can use this in many projects, it's so so helpful. Credits to the owner of the video!</p>
+    </div>
+  </div>
+  <div class="video-card" data-category="basics" data-embed="https://www.youtube.com/embed/qJdy6QxbbrQ">
+    <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/qJdy6QxbbrQ/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
+    <div class="video-info">
+      <span class="lvl">The Basics</span>
+      <h4>Double Crochet (dc)</h4>
+      <p>The taller cousin of the single crochet! It works a lot like sc, just with an extra yarn over at the start, so your rows grow way faster. Credits to the owner of the video!</p>
+    </div>
+  </div>
+  <div class="video-card" data-category="patterns" data-magic-ring data-embed="https://www.youtube.com/embed/gs5b8TjxKNU">
     <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/gs5b8TjxKNU/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Patterns</span>
@@ -398,7 +431,7 @@ R23: dec*8 [8]
 You can add some dec to make it smaller if you want (optional!) before cutting the yarn and weaving it in to close the top</pre>
   </div>
 
-  <div class="video-card" data-category="patterns" data-embed="https://www.youtube.com/embed/1zE0Edn9LVo">
+  <div class="video-card" data-category="patterns" data-magic-ring data-embed="https://www.youtube.com/embed/1zE0Edn9LVo">
     <div class="video-thumb" style="background-image:url('https://img.youtube.com/vi/1zE0Edn9LVo/hqdefault.jpg');background-size:cover;background-position:center;"><div class="play-btn">▶</div></div>
     <div class="video-info">
       <span class="lvl">Patterns</span>
@@ -413,19 +446,14 @@ R9: fold bowl in half, slst into the first stitches, (ch2, sc1 in the next pair 
 Attach the red yarn, (3ch, 1sc in the next pair of stitches)*2, 1sc (last one a bit tighter than the rest), fasten off (sew the ends in)
 Embroider the beak, use your preferred method of attaching eyes</pre>
   </div>
-  <div class="video-card" data-category="advanced">
-    <div class="video-thumb"><div class="play-btn">▶</div></div>
-    <div class="video-info">
-      <span class="lvl">Advanced</span>
-      <h4>Reading a Pattern Chart</h4>
-      <p>Turning those confusing symbols into an actual plan.</p>
-    </div>
-  </div>
 </div>
+
+<p class="empty-msg" id="emptyMsg" hidden>Nothing here yet, but tips are on the way! Check back soon. 🧶</p>
 
 <div class="modal-overlay" id="videoModal">
   <div class="modal-box">
     <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-tabs" id="modalTabs" style="display:none;"></div>
     <div class="modal-video-wrap" id="modalVideoWrap">
       <iframe id="modalVideoFrame" src="" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
@@ -433,6 +461,7 @@ Embroider the beak, use your preferred method of attaching eyes</pre>
     <span class="lvl" id="modalLvl"></span>
     <h3 id="modalTitle"></h3>
     <p class="modal-desc" id="modalDesc"></p>
+    <button class="modal-tip" id="modalTip" type="button" style="display:none;">🧶 New to magic rings? Check out the Magic Ring video in The Basics <span aria-hidden="true">→</span></button>
     <span class="modal-pattern-label" id="modalPatternLabel" style="display:none;">Written pattern</span>
     <pre class="modal-pattern" id="modalPattern" style="display:none;"></pre>
   </div>
@@ -450,6 +479,8 @@ Embroider the beak, use your preferred method of attaching eyes</pre>
       cards.forEach(card => {
         card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
       });
+      const anyShown = [...cards].some(c => c.style.display !== 'none');
+      document.getElementById('emptyMsg').hidden = anyShown;
     });
   });
 
@@ -475,6 +506,27 @@ Embroider the beak, use your preferred method of attaching eyes</pre>
     modalTitle.textContent = title;
     modalDesc.textContent = desc;
 
+    const modalTabs = document.getElementById('modalTabs');
+    modalTabs.innerHTML = '';
+    const alts = card.querySelectorAll('.alt-videos [data-embed]');
+    if (alts.length > 1) {
+      alts.forEach((alt, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'modal-tab' + (i === 0 ? ' active' : '');
+        b.textContent = (i + 1) + '. ' + alt.textContent;
+        b.addEventListener('click', () => {
+          modalTabs.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+          b.classList.add('active');
+          modalFrame.src = alt.dataset.embed;
+        });
+        modalTabs.appendChild(b);
+      });
+      modalTabs.style.display = 'flex';
+    } else {
+      modalTabs.style.display = 'none';
+    }
+
     if (embed) {
       modalFrame.src = embed;
       modalVideoWrap.style.display = '';
@@ -494,8 +546,19 @@ Embroider the beak, use your preferred method of attaching eyes</pre>
       modalPatternLabel.style.display = 'none';
     }
 
+    modalTip.style.display = ('magicRing' in card.dataset) ? 'block' : 'none';
+
     modal.classList.add('open');
   }
+
+  const modalTip = document.getElementById('modalTip');
+  modalTip.addEventListener('click', () => {
+    const ring = document.getElementById('magicRingCard');
+    modalFrame.src = '';
+    openModal(ring);
+    const box = modal.querySelector('.modal-box');
+    if (box) box.scrollTop = 0;
+  });
 
   function closeModal() {
     modal.classList.remove('open');
