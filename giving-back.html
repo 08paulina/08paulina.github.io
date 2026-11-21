@@ -311,6 +311,26 @@ footer p{color:var(--ink-soft);font-size:13px;}
   .why-card{padding:32px 24px;}
   .why-card h2{font-size:32px;}
 }
+
+/* partnership (giving back) */
+.partner-wrap{padding:0 28px;}
+.partner-card{
+  max-width:1080px;margin:56px auto 0;background:#fff;border-radius:18px;padding:34px;
+  border:1px solid rgba(62,39,35,0.08);box-shadow:0 10px 22px -18px rgba(62,39,35,0.35);
+  display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:center;
+}
+.partner-photo{background:#fff;padding:10px 10px 14px;border-radius:6px;box-shadow:0 12px 24px -14px rgba(62,39,35,0.45);transform:rotate(-1.5deg);position:relative;}
+.partner-photo .ph{aspect-ratio:4/3;border-radius:3px;background-size:cover;background-position:center;}
+.partner-photo .cap{font-family:'Space Mono',monospace;font-size:10.5px;text-align:center;color:var(--ink-soft);margin-top:9px;}
+.partner-photo .tape{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);width:56px;height:18px;background:rgba(242,201,76,0.6);}
+.partner-status{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--rose);padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:14px;}
+.partner-text h2{font-family:'Gochi Hand',cursive;font-size:40px;line-height:1.05;margin:0 0 12px;font-weight:400;}
+.partner-text p{margin:0 0 12px;font-size:15px;color:var(--ink-soft);line-height:1.7;}
+.partner-text p:last-child{margin-bottom:0;}
+@media (max-width:760px){
+  .partner-card{grid-template-columns:1fr;padding:24px;gap:26px;}
+  .partner-text h2{font-size:32px;}
+}
 </style>
 </head>
 <body>
@@ -354,6 +374,22 @@ footer p{color:var(--ink-soft);font-size:13px;}
   </div>
 </div>
 
+<div class="partner-wrap">
+  <div class="partner-card">
+    <div class="partner-photo">
+      <div class="tape"></div>
+      <div class="ph" role="img" aria-label="A tote bag full of crocheted stuffed animals and blankets" style="background-image:url('images/donations-bag.jpg');"></div>
+      <div class="cap">packed up and ready to go</div>
+    </div>
+    <div class="partner-text">
+      <span class="partner-status">in the works</span>
+      <h2>headed to Paterson</h2>
+      <p>We're teaming up with the missions team at Pilgrim Mission Church's youth group. They work with Metro World Kids, which reaches children from underserved families in Paterson, NJ, with games, goodie bags, and a whole lot of fun. The plan: our crocheted stuffed animals go straight to those kids.</p>
+      <p>The missions team is also reaching out to student clubs across Bergen County, so even more hooks might be joining in soon. Updates coming as it all comes together!</p>
+    </div>
+  </div>
+</div>
+
 <div class="why-wrap">
   <div class="why-card">
     <span class="why-label">why stuffed animals?</span>
@@ -379,7 +415,7 @@ footer p{color:var(--ink-soft);font-size:13px;}
 </div>
 
 <div class="note-card">
-  <strong>A note on photos:</strong> when we share photos from donations, we're careful about privacy. We never show children's faces or names without permission.
+  <strong>A note on privacy:</strong> we keep faces and real names off this site whenever we can. Our crew goes by nicknames, and we never show the faces or names of the kids we donate to.
 </div>
 
 <div class="chain"></div>
